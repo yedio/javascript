@@ -1,0 +1,56 @@
+<script>
+  // 배열내 특정 객체의 총 합 구하여 데이터 가공하기
+  const originalData = [
+    {
+      nick: "떡볶이",
+      referal_trade_list: [
+        {
+          nick: "크롱",
+          trade_volume: 456210,
+        },
+        {
+          nick: "뽀로로",
+          trade_volume: 169100,
+        },
+      ],
+    },
+    {
+      nick: "파스타",
+      referal_trade_list: [
+        {
+          nick: "베토디",
+          trade_volume: 11000,
+        },
+        {
+          nick: "감자튀김",
+          trade_volume: 159900,
+        },
+        {
+          nick: "아이스크림",
+          trade_volume: 190000,
+        },
+      ],
+    },
+    {
+      nick: "하늘보리",
+      referal_trade_list: [],
+    },
+    {
+      nick: "아침햇살",
+      referal_trade_list: [],
+    },
+  ];
+
+  const resultData = JSON.parse(JSON.stringify(originalData));
+
+  resultData.forEach((data) => {
+    let totalVal = 0;
+    data.referal_trade_list.forEach((trade) => {
+      totalVal += trade.trade_volume;
+    });
+    data.total_val = totalVal;
+  });
+
+  console.log("--", originalData);
+  console.log("++", resultData);
+</script>
