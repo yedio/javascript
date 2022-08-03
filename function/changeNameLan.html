@@ -1,0 +1,30 @@
+<script>
+  // 영어 - 한글로 이루어진 특정 객체 찾아 언어 변경하여 반환하기
+  const EXCHANGE_LIST = [
+    { nameEng: "APPLE", nameKo: "사과" },
+    { nameEng: "BANANA", nameKo: "바나나" },
+    { nameEng: "CARROT", nameKo: "당근" },
+    { nameEng: "MANGO", nameKo: "망고" },
+  ];
+
+  const changeNameLan = (list, name) => {
+    const validEng = /[a-zA-Z]/;
+    const validKo = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+
+    const result = list.find((e) => {
+      if (e.nameEng === name || e.nameKo === name) {
+        return true;
+      }
+    });
+
+    if (validEng.test(name)) {
+      return result.nameKo;
+    } else if (validKo.test(name)) {
+      return result.nameEng;
+    }
+  };
+
+  console.log(changeNameLan(EXCHANGE_LIST, "사과"));
+  console.log(changeNameLan(EXCHANGE_LIST, "CARROT"));
+  console.log(changeNameLan(EXCHANGE_LIST, "망고"));
+</script>
